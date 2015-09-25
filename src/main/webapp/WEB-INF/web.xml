@@ -3,27 +3,36 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <!-- tag::webxml-spring[] -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:application-context.xml</param-value>
+    </context-param>
+
+    <!-- Spring listeners -->
     <listener>
-        <listener-class>org.granite.config.GraniteConfigListener</listener-class>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
+    <!-- end::webxml-spring[] -->
+
+    <!-- tag::webxml-graniteds[] -->
+    <!-- GraniteDS listeners -->
+    <listener>
+        <listener-class>org.granite.config.GraniteConfigListener</listener-class> <!--1-->
     </listener>
 
-    <filter>
-        <filter-name>AMFMessageFilter</filter-name>
-        <filter-class>org.granite.messaging.webapp.AMFMessageFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>AMFMessageFilter</filter-name>
-        <url-pattern>/graniteamf/*</url-pattern>
-    </filter-mapping>
-
+    <!-- Spring MVC dispatcher servlet -->
     <servlet>
-        <servlet-name>AMFMessageServlet</servlet-name>
-        <servlet-class>org.granite.messaging.webapp.AMFMessageServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>AMFMessageServlet</servlet-name>
-        <url-pattern>/graniteamf/*</url-pattern>
-    </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/graniteamf/*</url-pattern> <!--2-->
+    </servlet-mapping>
+    <!-- end::webxml-graniteds[] -->
 </web-app>
