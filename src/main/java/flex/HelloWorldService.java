@@ -1,4 +1,4 @@
-package org.graniteds.tutorial.remoting.server;
+package flex;
 
 import org.granite.messaging.service.annotations.RemoteDestination;
 
