@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- tag::namespace[] -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:graniteds="http://www.graniteds.org/config"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.graniteds.org/config
+            http://www.graniteds.org/public/dtd/3.1.0/granite-config-3.1.xsd">
+    <!-- end::namespace[] -->
+
+    <!-- Spring annotation scan -->
+    <context:component-scan base-package="org.graniteds.tutorial.remoting.server"/>
+
+    <!-- tag::graniteds-config[] -->
+    <graniteds:server-filter tide="true" url-pattern="/*"/>
+
+
+    <!-- tag::graniteds-config[] -->
+    <!--<graniteds:server-filter/>-->
+    <!-- end::graniteds-config[] -->
+
+    <!-- tag::messaging-destination[] -->
+    <graniteds:messaging-destination id="chatTopic"/>
+    <!-- end::messaging-destination[] -->
+
+</beans>
