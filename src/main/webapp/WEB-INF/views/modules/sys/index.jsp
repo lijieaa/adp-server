@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
-    <title>xx</title>
-  </head>
-  <body>
-  64646466
-  </body>
+<head>
+    <title></title>
+</head>
+<body>
+后台管理
+</body>
 </html>
